@@ -23,6 +23,8 @@
 		EAC61FE4195A113500FEC7C7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC61FC0195A113500FEC7C7 /* UIKit.framework */; };
 		EAC61FEC195A113500FEC7C7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EAC61FEA195A113500FEC7C7 /* InfoPlist.strings */; };
 		EAC61FEE195A113500FEC7C7 /* UnseenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EAC61FED195A113500FEC7C7 /* UnseenTests.m */; };
+		EAD50889195AE8AF00C23A83 /* CarFindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD50888195AE8AF00C23A83 /* CarFindViewController.m */; };
+		EAD5088C195AEEE400C23A83 /* CarTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD5088B195AEEE400C23A83 /* CarTypeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,10 @@
 		EAC61FE9195A113500FEC7C7 /* UnseenTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnseenTests-Info.plist"; sourceTree = "<group>"; };
 		EAC61FEB195A113500FEC7C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EAC61FED195A113500FEC7C7 /* UnseenTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnseenTests.m; sourceTree = "<group>"; };
+		EAD50887195AE8AF00C23A83 /* CarFindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarFindViewController.h; sourceTree = SOURCE_ROOT; };
+		EAD50888195AE8AF00C23A83 /* CarFindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarFindViewController.m; sourceTree = SOURCE_ROOT; };
+		EAD5088A195AEEE400C23A83 /* CarTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarTypeViewController.h; sourceTree = SOURCE_ROOT; };
+		EAD5088B195AEEE400C23A83 /* CarTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarTypeViewController.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +126,10 @@
 				EAC61FCB195A113500FEC7C7 /* AppDelegate.h */,
 				EAC61FCC195A113500FEC7C7 /* AppDelegate.m */,
 				EAC61FCE195A113500FEC7C7 /* Main_iPhone.storyboard */,
+				EAD5088A195AEEE400C23A83 /* CarTypeViewController.h */,
+				EAD5088B195AEEE400C23A83 /* CarTypeViewController.m */,
+				EAD50887195AE8AF00C23A83 /* CarFindViewController.h */,
+				EAD50888195AE8AF00C23A83 /* CarFindViewController.m */,
 				EAC61FD1195A113500FEC7C7 /* Main_iPad.storyboard */,
 				EAC61FD4195A113500FEC7C7 /* FirstViewController.h */,
 				EAC61FD5195A113500FEC7C7 /* FirstViewController.m */,
@@ -261,7 +271,9 @@
 				EAC61FD9195A113500FEC7C7 /* SecondViewController.m in Sources */,
 				EAC61FCD195A113500FEC7C7 /* AppDelegate.m in Sources */,
 				EAC61FD6195A113500FEC7C7 /* FirstViewController.m in Sources */,
+				EAD5088C195AEEE400C23A83 /* CarTypeViewController.m in Sources */,
 				EAC61FC9195A113500FEC7C7 /* main.m in Sources */,
+				EAD50889195AE8AF00C23A83 /* CarFindViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,6 +490,7 @@
 				EAC61FF3195A113500FEC7C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EAC61FF4195A113500FEC7C7 /* Build configuration list for PBXNativeTarget "UnseenTests" */ = {
 			isa = XCConfigurationList;
@@ -486,6 +499,7 @@
 				EAC61FF6195A113500FEC7C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

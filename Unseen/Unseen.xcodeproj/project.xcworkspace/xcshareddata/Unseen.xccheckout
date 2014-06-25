@@ -5,11 +5,13 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>1467CC4B-663E-419A-A318-A9991C156FEE</string>
+	<string>A29C2D38-C166-47A7-A581-0489A91A3622</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Unseen</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>16935E49-06EC-4350-B39D-0AF338A13A14</key>
+		<string>https://github.com/tonykean888/Unseen.git</string>
 		<key>6A26F18E-4A4E-40B5-91CB-F30BB9D358A1</key>
 		<string>http://bitbucket.org/tony_kean/firstojc.git</string>
 	</dict>
@@ -17,11 +19,13 @@
 	<string>Unseen/Unseen/Unseen.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>16935E49-06EC-4350-B39D-0AF338A13A14</key>
+		<string>../../..</string>
 		<key>6A26F18E-4A4E-40B5-91CB-F30BB9D358A1</key>
 		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>http://bitbucket.org/tony_kean/firstojc.git</string>
+	<string>https://github.com/tonykean888/Unseen.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -35,6 +39,14 @@
 			<string>6A26F18E-4A4E-40B5-91CB-F30BB9D358A1</string>
 			<key>IDESourceControlWCCName</key>
 			<string>project</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>16935E49-06EC-4350-B39D-0AF338A13A14</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Unseen</string>
 		</dict>
 	</array>
 </dict>
