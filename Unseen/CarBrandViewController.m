@@ -1,26 +1,27 @@
 //
-//  CarTypeViewController.m
+//  CarBrandViewController.m
 //  Unseen
 //
-//  Created by Tony on 6/25/2557 BE.
+//  Created by Tony on 6/26/2557 BE.
 //  Copyright (c) 2557 Unseencar. All rights reserved.
 //
 
-#import "CarTypeViewController.h"
+#import "CarBrandViewController.h"
 
 
-@interface CarTypeViewController ()
+@interface CarBrandViewController ()
 
 @end
 
-@implementation CarTypeViewController
+@implementation CarBrandViewController
 {
-    NSMutableArray *arrCarType;
+    NSMutableArray *arrCarBrand;
     NSInteger selectedIndex;
-    NSString *carTypeID,*carTypeName;
+    NSString *brandID,*brandName;
     NSMutableDictionary *dict;
+    
 }
-@synthesize selectedCarTypeID,selectedCarType;
+@synthesize selectedCarBrand,selectedCarBrandID,selCarTypeID;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -34,52 +35,43 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-   
-    arrCarType = [[NSMutableArray alloc] init];
     
-    NSData *jsonCarType = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://localhost/unseen/CarTypeJson.php"]];
+    arrCarBrand = [[NSMutableArray alloc] init];
+    NSString *strURL = [NSString stringWithFormat:@"http://localhost/unseen/CarBrandJson.php?carTypeID=%@",selCarTypeID];
     
-    id jsonObj = [NSJSONSerialization JSONObjectWithData:jsonCarType options:NSJSONReadingMutableContainers error:nil];
-
+    NSLog(@"url %@",strURL);
+    NSData *jsonBrand = [NSData dataWithContentsOfURL:[NSURL URLWithString:strURL]];
     
+    id jsonObj = [NSJSONSerialization JSONObjectWithData:jsonBrand options:NSJSONReadingMutableContainers error:nil];
+    int i = 1;
     for(NSDictionary *dataDict in jsonObj)
     {
-        NSString *strCarTypeID = [dataDict objectForKey:@"id"];
-        NSString *strCarTypeName = [dataDict objectForKey:@"car_type_th"];
+        NSString *strCarBrand = [dataDict objectForKey:@"brand_name"];
+        NSString *strCarBrandID = [NSString stringWithFormat:@"%d",i];
         dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                strCarTypeID,@"typeID",
-                strCarTypeName,@"CarType"
-                ,nil];
-        
-        
-        // NSLog(@"id:%@,type:%@",strCarTypeID,strCarTypeName);
-        [arrCarType addObject:dict];
-        
-        
-        //selectedIndex = [arrCarType indexOfObject:self.carType];
+                strCarBrand,@"brandName",
+                 strCarBrandID,@"brandID",
+                nil];
+        [arrCarBrand addObject:dict];
+        i++;
     }
-    NSMutableDictionary *dict2 = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                 @"0",@"typeID",
-                                 @"ทุกประเภท",@"CarType"
-                                 ,nil];
-    [arrCarType insertObject:dict2 atIndex:0];
+    //NSLog(@"typeID %@",_selCarTypeID);
+
     
-    NSMutableArray *valueArr = [arrCarType valueForKey:@"CarType"];
-    int index = [valueArr indexOfObject:selectedCarType];
-    //NSLog(@"at row %d",index);
+    NSMutableDictionary *dict2 = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+            @"ทุกยี่ห้อ",@"brandName",
+            @"0",@"brandID",
+            nil];
+    
+    [arrCarBrand insertObject:dict2 atIndex:0];
+    
+   // NSLog(@"url %@",strURL);
+   // NSLog(@"brandID %@",selectedCarBrandID);
+    
+    NSMutableArray *valueArr = [arrCarBrand valueForKey:@"brandName"];
+    int index = [valueArr indexOfObject:selectedCarBrand];
     selectedIndex = index;
     
-//    NSUInteger index;
-//    NSString *myIdentifier = selectedCarType;
-//    
-//    index = [arrCarType indexOfObjectPassingTest:
-//             ^(id obj, NSUInteger idx, BOOL *stop) {
-//                 return ([obj.identifier isEqualToString:myIdentifier]);
-//             }];
-    
-   // NSLog(@"%@:", [arrCarType[3] objectForKey:@"CarType"]);
-   //  NSLog(@"count:%lu",(unsigned long)[arrCarType count]);
-   
 }
 
 - (void)didReceiveMemoryWarning
@@ -99,19 +91,19 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+
     // Return the number of rows in the section.
-    return [arrCarType count];
+    return [arrCarBrand count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-   //NSLog(@"แถวที่ : %d",indexPath.row);
     
-    cell.textLabel.text = [arrCarType[indexPath.row] objectForKey:@"CarType"];
     
-    if (indexPath.row == selectedIndex)
+    cell.textLabel.text = [arrCarBrand [indexPath.row] objectForKey:@"brandName"];
+    if(indexPath.row ==selectedIndex)
     {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
@@ -119,9 +111,8 @@
     {
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
+    
     return cell;
-    
-    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -132,13 +123,12 @@
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:selectedIndex inSection:0]];
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
-    
     selectedIndex = indexPath.row;
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    carTypeID = [arrCarType[indexPath.row] objectForKey:@"typeID"];
-    carTypeName = [arrCarType[indexPath.row] objectForKey:@"CarType"];
-    [self.delegate cartypeViewCOntroller:carTypeName forCarTypeID:carTypeID];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    brandID = [arrCarBrand[indexPath.row] objectForKey:@"brandID"];
+    brandName = [arrCarBrand[indexPath.row] objectForKey:@"brandName"];
+    [self.delegate carbrandViewController:brandName forCarBrandID:brandID];
+
 }
 
 
@@ -190,5 +180,7 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
 
 @end
