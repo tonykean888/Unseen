@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA333E11196BFEF90023C303 /* CarSubModelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA333E10196BFEF90023C303 /* CarSubModelViewController.m */; };
+		EA3D81CD1969DD5F00DC9C20 /* cellCarUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3D81CC1969DD5F00DC9C20 /* cellCarUpdate.m */; };
 		EA463A3B196313D70083EC6F /* CarDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA463A3A196313D70083EC6F /* CarDetailViewController.m */; };
 		EA5E0D631961D1F7000B32DF /* ttt.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5E0D621961D1F7000B32DF /* ttt.m */; };
 		EA677A131967057B005A2845 /* CarGarlleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA677A121967057B005A2845 /* CarGarlleryViewController.m */; };
@@ -29,6 +31,7 @@
 		EAC91FB619670ED8004229ED /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAC91FB419670ED8004229ED /* Main_iPhone.storyboard */; };
 		EAD50889195AE8AF00C23A83 /* CarFindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD50888195AE8AF00C23A83 /* CarFindViewController.m */; };
 		EAD5088C195AEEE400C23A83 /* CarTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD5088B195AEEE400C23A83 /* CarTypeViewController.m */; };
+		EAE20124196AB3D500EACD58 /* CarDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE20123196AB3D500EACD58 /* CarDetail.m */; };
 		EAE544011963EDD6007AD46C /* CarUpdateController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE544001963EDD6007AD46C /* CarUpdateController.m */; };
 		EAF1E24419615EE500D65F19 /* cellFindResult.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF1E24319615EE500D65F19 /* cellFindResult.m */; };
 		EAF7D06819609C3000C3A18B /* FindResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF7D06719609C3000C3A18B /* FindResultViewController.m */; };
@@ -46,6 +49,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EA333E0F196BFEF90023C303 /* CarSubModelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarSubModelViewController.h; sourceTree = "<group>"; };
+		EA333E10196BFEF90023C303 /* CarSubModelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarSubModelViewController.m; sourceTree = "<group>"; };
+		EA3D81CB1969DD5F00DC9C20 /* cellCarUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cellCarUpdate.h; sourceTree = "<group>"; };
+		EA3D81CC1969DD5F00DC9C20 /* cellCarUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cellCarUpdate.m; sourceTree = "<group>"; };
 		EA463A39196313D70083EC6F /* CarDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarDetailViewController.h; sourceTree = "<group>"; };
 		EA463A3A196313D70083EC6F /* CarDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarDetailViewController.m; sourceTree = "<group>"; };
 		EA5E0D611961D1F7000B32DF /* ttt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ttt.h; sourceTree = "<group>"; };
@@ -80,6 +87,8 @@
 		EAD50888195AE8AF00C23A83 /* CarFindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarFindViewController.m; sourceTree = SOURCE_ROOT; };
 		EAD5088A195AEEE400C23A83 /* CarTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarTypeViewController.h; sourceTree = SOURCE_ROOT; };
 		EAD5088B195AEEE400C23A83 /* CarTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarTypeViewController.m; sourceTree = SOURCE_ROOT; };
+		EAE20122196AB3D500EACD58 /* CarDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarDetail.h; sourceTree = "<group>"; };
+		EAE20123196AB3D500EACD58 /* CarDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarDetail.m; sourceTree = "<group>"; };
 		EAE543FF1963EDD6007AD46C /* CarUpdateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarUpdateController.h; sourceTree = "<group>"; };
 		EAE544001963EDD6007AD46C /* CarUpdateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarUpdateController.m; sourceTree = "<group>"; };
 		EAF1E24219615EE500D65F19 /* cellFindResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cellFindResult.h; sourceTree = "<group>"; };
@@ -150,13 +159,19 @@
 				EAC61FCB195A113500FEC7C7 /* AppDelegate.h */,
 				EAC61FCC195A113500FEC7C7 /* AppDelegate.m */,
 				EAC91FB419670ED8004229ED /* Main_iPhone.storyboard */,
+				EA333E0F196BFEF90023C303 /* CarSubModelViewController.h */,
+				EA333E10196BFEF90023C303 /* CarSubModelViewController.m */,
 				EA677A111967057B005A2845 /* CarGarlleryViewController.h */,
 				EA677A121967057B005A2845 /* CarGarlleryViewController.m */,
 				EAE543FF1963EDD6007AD46C /* CarUpdateController.h */,
 				EAE544001963EDD6007AD46C /* CarUpdateController.m */,
 				EA463A39196313D70083EC6F /* CarDetailViewController.h */,
 				EA463A3A196313D70083EC6F /* CarDetailViewController.m */,
+				EAE20122196AB3D500EACD58 /* CarDetail.h */,
+				EAE20123196AB3D500EACD58 /* CarDetail.m */,
 				EA5E0D611961D1F7000B32DF /* ttt.h */,
+				EA3D81CB1969DD5F00DC9C20 /* cellCarUpdate.h */,
+				EA3D81CC1969DD5F00DC9C20 /* cellCarUpdate.m */,
 				EA5E0D621961D1F7000B32DF /* ttt.m */,
 				EAF1E24219615EE500D65F19 /* cellFindResult.h */,
 				EAF1E24319615EE500D65F19 /* cellFindResult.m */,
@@ -312,16 +327,19 @@
 				EAC61FD9195A113500FEC7C7 /* SecondViewController.m in Sources */,
 				EAF1E24419615EE500D65F19 /* cellFindResult.m in Sources */,
 				EA88C31F195EBCD6007F7EAB /* CarModelViewController.m in Sources */,
+				EA3D81CD1969DD5F00DC9C20 /* cellCarUpdate.m in Sources */,
 				EA463A3B196313D70083EC6F /* CarDetailViewController.m in Sources */,
 				EAC61FCD195A113500FEC7C7 /* AppDelegate.m in Sources */,
 				EAC61FD6195A113500FEC7C7 /* FirstViewController.m in Sources */,
 				EAFD125B195C4D7C00DBF795 /* CarBrandViewController.m in Sources */,
+				EA333E11196BFEF90023C303 /* CarSubModelViewController.m in Sources */,
 				EAF7D06819609C3000C3A18B /* FindResultViewController.m in Sources */,
 				EAD5088C195AEEE400C23A83 /* CarTypeViewController.m in Sources */,
 				EAE544011963EDD6007AD46C /* CarUpdateController.m in Sources */,
 				EAC61FC9195A113500FEC7C7 /* main.m in Sources */,
 				EAD50889195AE8AF00C23A83 /* CarFindViewController.m in Sources */,
 				EA677A131967057B005A2845 /* CarGarlleryViewController.m in Sources */,
+				EAE20124196AB3D500EACD58 /* CarDetail.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

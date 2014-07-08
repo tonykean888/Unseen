@@ -15,10 +15,20 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 
 
+
 - (IBAction)onChangeSeg:(id)sender;
 @property (strong,nonatomic) NSString *sCarID;
 
 @property (strong, nonatomic) IBOutlet UITextView *textViewDetail;
+
+@property (strong, nonatomic) IBOutlet UIScrollView *tentScrollView;
+
+
+@property (strong, nonatomic) IBOutlet UIScrollView *carScrollView;
+
+@property (strong, nonatomic) IBOutlet UIImageView *mapImage;
+
+@property (strong, nonatomic) IBOutlet UITextView *tentDetailText;
 
 
 @end

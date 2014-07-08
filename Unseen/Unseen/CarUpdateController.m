@@ -19,6 +19,7 @@
 
 @implementation CarUpdateController
 
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -41,13 +42,29 @@
         NSString *strCarID = [dataDict objectForKey:@"car_id"];
 
         NSString *folder = [[dataDict objectForKey:@"car_id"] substringWithRange:NSMakeRange(5, 2)];
+        
         NSString *thumbName = [strCarID stringByAppendingString:@"1.jpg"];
         
         NSString *strThumbURL = [NSString stringWithFormat:@"http://www.unseencar.com/carpic/%@/S/%@",folder,thumbName];
+        NSString *strModel = [dataDict objectForKey:@"model"];
+        NSString *strPrice = [dataDict objectForKey:@"prices"];
+        
+        NSString *strYear;
+        
       
+        if([[dataDict objectForKey:@"years"] length] == 4 )
+        {
+          strYear = [[dataDict objectForKey:@"years"] substringWithRange:NSMakeRange(2, 2)];
+        }
+        
+        NSLog(@"%@",strYear);
+        
         dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                 strCarID,@"carID",
-                strThumbURL,@"thumb"
+                strThumbURL,@"thumb",
+                strModel,@"carModel",
+                strYear,@"carYear",
+                strPrice,@"carPrice"
                 , nil];
         [arrCarUpadate addObject:dict];
     }
@@ -67,20 +84,45 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"cell";
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
-    UIImageView *carUpdateThumb = (UIImageView *)[cell viewWithTag:100];
-    
+//    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+//    UIImageView *carUpdateThumb = (UIImageView *)[cell viewWithTag:100];
+//    
     NSURL *thmbUrl = [NSURL URLWithString:[arrCarUpadate [indexPath.row] objectForKey:@"thumb"]];
     NSData *thmbData = [NSData dataWithContentsOfURL:thmbUrl];
+    UIImage *thumb = [UIImage imageWithData:thmbData];
+//    
+//    
+//    carUpdateThumb.image = [UIImage imageWithData:thmbData];
+    
+    cellCarUpdate *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    
+   
+    [[cell imageThumb] setImage:thumb];
+    
+    [[cell lblPrices] setText:[arrCarUpadate [indexPath.row] objectForKey:@"carPrice"]];
+  
+    NSString *sModel = [arrCarUpadate [indexPath.row] objectForKey:@"carModel"];
+    NSString *syear = [arrCarUpadate [indexPath.row] objectForKey:@"carYear"];
+    NSString *sModelYear = [NSString stringWithFormat:@"%@ '%@",sModel,syear];
     
     
-    carUpdateThumb.image = [UIImage imageWithData:thmbData];
+    [[cell lblModel] setText:sModelYear];
+   // [[cell lblModel] setNumberOfLines:0];
+   // [[cell lblModel] setFrame:CGRectMake(10, 80, 100, 20)];
+    //[[cell lblModel] setBackgroundColor:[UIColor redColor]];
+   // [[cell lblModel]setTextAlignment:NSTextAlignmentCenter];
+    
+    //[[cell lblModel] sizeToFit];
+    
+    
     
     return cell;
     
     
     
 }
+
+
 
 /*
 #pragma mark - Navigation

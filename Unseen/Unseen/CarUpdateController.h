@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "CarDetailViewController.h"
+#import "cellCarUpdate.h"
 
 @interface CarUpdateController : UICollectionViewController
 
 @end
+

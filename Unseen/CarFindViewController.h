@@ -11,11 +11,13 @@
 #import "CarBrandViewController.h"
 #import "CarModelViewController.h"
 #import "FindResultViewController.h"
+#import "CarSubModelViewController.h"
 
 @interface CarFindViewController : UITableViewController
 @property (weak, nonatomic) IBOutlet UILabel *lblSelCarType;
 @property (weak, nonatomic) IBOutlet UILabel *lblSelCarBrand;
 @property (weak, nonatomic) IBOutlet UILabel *lblSelCarModel;
+@property (weak, nonatomic) IBOutlet UILabel *lblSelCarSubModel;
 
 - (IBAction)btnFindCar:(id)sender;
 

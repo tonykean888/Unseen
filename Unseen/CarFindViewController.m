@@ -9,14 +9,14 @@
 #import "CarFindViewController.h"
 
 
-@interface CarFindViewController ()<CarTypeViewControllerDelegate,CarBrandViewControllerDelegate,CarModelViewControllerDelegate>
+@interface CarFindViewController ()<CarTypeViewControllerDelegate,CarBrandViewControllerDelegate,CarModelViewControllerDelegate,CarSubModelViewControllerDelegate>
 
 
 @end
 
 @implementation CarFindViewController
 {
-    NSString *cartype,*cartypeID,*brandID,*brandName,*modelName,*modelID;
+    NSString *cartype,*cartypeID,*brandID,*brandName,*modelName,*modelID,*subModel,*subModelID;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -53,7 +53,7 @@
 {
 
     // Return the number of rows in the section.
-    return 4;
+    return 5;
 }
 
 
@@ -158,6 +158,19 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma mark - CarSubModel
+
+-(void)CarSubModelViewController:(NSString *)selectedCarSubModel forCarSubModelID: (NSString *) selectedCarSubModelID;
+
+{
+    subModelID = selectedCarSubModelID;
+    subModel = selectedCarSubModel;
+    self.lblSelCarSubModel.text = subModel;
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+
 #pragma mark - Segue
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -189,24 +202,35 @@
         [[segue destinationViewController] setDelegate:self];
     }
     
+
+    
+    if([[segue identifier] isEqualToString:@"pushSubModel"])
+    {
+        [[segue destinationViewController] setSelCarModelID:modelID ];
+        [[segue destinationViewController] setSelectedCarSubModel:subModel];
+        [[segue destinationViewController] setDelegate:self];
+        
+        
+        
+    }
+    
     if ([[segue identifier] isEqualToString:@"pushFindResult"])
     {
         [[segue destinationViewController] setTypeID:cartypeID];
         [[segue destinationViewController] setBrandID:brandID];
         [[segue destinationViewController] setBrandName:brandName];
         [[segue destinationViewController] setModelID:modelID];
-       
+        
+        
+        
     }
-    
-    
-    
 }
 - (IBAction)btnFindCar:(id)sender {
  
     
    
 
-       NSLog(@"selectedID: %@ selectTypeName %@  brandID %@ brandName%@ modelId %@ modelName %@",cartypeID,cartype,brandID,brandName,modelID,modelName);
+       NSLog(@"selectedID: %@ selectTypeName %@  brandID %@ brandName%@ modelId %@ modelName %@  subModel %@ subModelID %@",cartypeID,cartype,brandID,brandName,modelID,modelName,subModel,subModelID);
  
     
 
