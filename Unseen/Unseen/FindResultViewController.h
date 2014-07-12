@@ -11,6 +11,11 @@
 #import "cellFindResult.h"
 #import "CarDetailViewController.h"
 
+
+
+
+
+
 @protocol FindResultDelegate <NSObject>
 -(void)findResultController:(NSString *)carID;
 
@@ -18,15 +23,20 @@
 
 @interface FindResultViewController : UITableViewController
 {
-    NSString *typeID,*brandID,*brandName,*modelID;
+    NSString *typeID,*brandID,*brandName,*modelID,*subModelID;
+
 }
 
 @property (retain,nonatomic) NSString *typeID;
 @property (retain,nonatomic) NSString *brandName;
 @property (retain,nonatomic) NSString *modelID;
 @property (retain,nonatomic) NSString *brandID;
+@property (retain,nonatomic) NSString *subModelID;
 
 @property (strong,nonatomic) NSString *selectCarID;
+@property (strong,nonatomic) NSMutableArray *tableItems;
+@property (strong,nonatomic) NSMutableDictionary *cachedImages;
+
 
 @property (nonatomic,weak) id<FindResultDelegate> delegate;
 

@@ -208,9 +208,9 @@
     {
         [[segue destinationViewController] setSelCarModelID:modelID ];
         [[segue destinationViewController] setSelectedCarSubModel:subModel];
+        [[segue destinationViewController] setSelectedCarSubModelID:subModelID];
         [[segue destinationViewController] setDelegate:self];
-        
-        
+      
         
     }
     
@@ -220,21 +220,14 @@
         [[segue destinationViewController] setBrandID:brandID];
         [[segue destinationViewController] setBrandName:brandName];
         [[segue destinationViewController] setModelID:modelID];
-        
-        
-        
+        [[segue destinationViewController] setSubModelID:subModelID];
+       
     }
 }
 - (IBAction)btnFindCar:(id)sender {
  
-    
-   
 
        NSLog(@"selectedID: %@ selectTypeName %@  brandID %@ brandName%@ modelId %@ modelName %@  subModel %@ subModelID %@",cartypeID,cartype,brandID,brandName,modelID,modelName,subModel,subModelID);
  
-    
-
-    
-   
 }
 @end
