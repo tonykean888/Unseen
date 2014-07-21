@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "CarDetailViewController.h"
 #import "cellCarUpdate.h"
+#import "SDWebImage/UIImageView+WebCache.h"
+#import "Reachability.h"
+
 
 @interface CarUpdateController : UICollectionViewController
 

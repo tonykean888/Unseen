@@ -17,6 +17,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top.png"]];
+    
+ 
 	// Do any additional setup after loading the view, typically from a nib.
 }
 

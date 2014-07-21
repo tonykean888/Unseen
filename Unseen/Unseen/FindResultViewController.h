@@ -10,8 +10,7 @@
 #import "CarFindViewController.h"
 #import "cellFindResult.h"
 #import "CarDetailViewController.h"
-
-
+#import "SDWebImage/SDWebImageManager.h"
 
 
 

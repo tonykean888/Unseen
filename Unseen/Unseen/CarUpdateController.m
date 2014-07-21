@@ -8,6 +8,7 @@
 
 #import "CarUpdateController.h"
 
+
 @interface CarUpdateController ()
 {
     NSMutableArray *arrCarUpadate;
@@ -32,20 +33,35 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    arrCarUpadate = [[NSMutableArray alloc]init];
+    
+    UIImage *image = [UIImage imageNamed: @"top.png"];
+    UIImageView *imageview = [[UIImageView alloc] initWithImage: image];
+    
+    self.navigationItem.titleView = imageview;
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible =YES ;
     NSString *strUrl = [NSString stringWithFormat:@"http://localhost/unseen/CarUpdateJson.php"];
+   
+//    Reachability *reach = [Reachability reachabilityWithHostName:strUrl];
+//    NetworkStatus status = [reach currentReachabilityStatus];
+//    NSLog(@"status : %d",status);
+//    if (status == NotReachable) {
+//        UIAlertView  *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"ต้องการ การเชื่อมต่อ Internet" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [alert show];
+//    }
+//    
+    
+    
+    arrCarUpadate = [[NSMutableArray alloc]init];
+   
     NSData *jsonResult = [NSData dataWithContentsOfURL:[NSURL URLWithString:strUrl]];
     id jsonObj = [NSJSONSerialization JSONObjectWithData:jsonResult options:NSJSONReadingMutableContainers error:nil];
     
     for (NSDictionary *dataDict in jsonObj)
     {
         NSString *strCarID = [dataDict objectForKey:@"car_id"];
-
-        NSString *folder = [[dataDict objectForKey:@"car_id"] substringWithRange:NSMakeRange(5, 2)];
-        
-        NSString *thumbName = [strCarID stringByAppendingString:@"1.jpg"];
-        
-        NSString *strThumbURL = [NSString stringWithFormat:@"http://www.unseencar.com/carpic/%@/S/%@",folder,thumbName];
+     
+        NSString *strThumbURL = [dataDict objectForKey:@"thumb"];
         NSString *strModel = [dataDict objectForKey:@"model"];
         NSString *strPrice = [dataDict objectForKey:@"prices"];
         
@@ -57,7 +73,7 @@
           strYear = [[dataDict objectForKey:@"years"] substringWithRange:NSMakeRange(2, 2)];
         }
         
-        NSLog(@"%@",strYear);
+        //NSLog(@"%@",strYear);
         
         dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                 strCarID,@"carID",
@@ -69,6 +85,7 @@
         [arrCarUpadate addObject:dict];
     }
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -86,18 +103,45 @@
     static NSString *identifier = @"cell";
 //    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
 //    UIImageView *carUpdateThumb = (UIImageView *)[cell viewWithTag:100];
-//    
+//
+    
+    cellCarUpdate *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    
     NSURL *thmbUrl = [NSURL URLWithString:[arrCarUpadate [indexPath.row] objectForKey:@"thumb"]];
-    NSData *thmbData = [NSData dataWithContentsOfURL:thmbUrl];
-    UIImage *thumb = [UIImage imageWithData:thmbData];
+    
+    
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    
+    [manager downloadWithURL:thmbUrl
+                     options:0
+                    progress:nil
+     
+                   completed:^(UIImage *image, NSError *error, SDImageCacheType  SDImageCacheTypeMemory, BOOL finished)
+     {
+         if (image)
+         {
+             cell.imageThumb.image = image;
+         }
+         else
+         {
+             
+             cell.imageThumb.image = [UIImage imageNamed:@"logo.png"];
+         }
+         
+      [UIApplication sharedApplication].networkActivityIndicatorVisible =NO ;
+         
+     }];
+    
+//    NSData *thmbData = [NSData dataWithContentsOfURL:thmbUrl];
+//    UIImage *thumb = [UIImage imageWithData:thmbData];
 //    
 //    
 //    carUpdateThumb.image = [UIImage imageWithData:thmbData];
     
-    cellCarUpdate *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+
     
    
-    [[cell imageThumb] setImage:thumb];
+//    [[cell imageThumb] setImage:thumb];
     
     [[cell lblPrices] setText:[arrCarUpadate [indexPath.row] objectForKey:@"carPrice"]];
   

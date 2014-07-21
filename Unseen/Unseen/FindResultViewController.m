@@ -7,8 +7,8 @@
 //
 
 #import "FindResultViewController.h"
-//#import <SDWebImage/UIImageView+WebCache.h>
-#import <SDWebImage/SDWebImageManager.h>
+
+
 @interface FindResultViewController ()
 {
     NSMutableArray *arrResult;
@@ -39,6 +39,8 @@
     
     brandName = [brandName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     arrResult = [[NSMutableArray alloc]init];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible =YES ;
+    
     NSString *strUrl = [NSString stringWithFormat:@"http://localhost/unseen/FindResult.php?typeID=%@&brandID=%@&brandName=%@&modelID=%@&subModelID=%@",typeID,brandID,brandName,modelID,subModelID];
     
     
@@ -79,54 +81,7 @@
     }
     
     
-
-//    //ทดลองใช้ afnetwork
-//    NSURL *url = [NSURL URLWithString:strUrl];
-//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-//    
-//    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-//    
-//    operation.responseSerializer = [AFJSONResponseSerializer serializer];
-//    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        dataCar = (NSDictionary *)responseObject;
-//
-//       
-//        for (NSDictionary *dataDict in self->dataCar)
-//        {
-//            //NSLog(@"%@",[dataDict objectForKey:@"thumb"]);
-//            NSString *strCarID = [dataDict objectForKey:@"car_id"];
-//            NSString *strBrand = [dataDict objectForKey:@"brand_name"];
-//            NSString *strModel = [dataDict objectForKey:@"model"];
-//            NSString *strDetail = [dataDict objectForKey:@"detail"];
-//            NSString *strSubModel = [dataDict objectForKey:@"sub_submodel"];
-//            NSString *strPrices = [dataDict objectForKey:@"prices"];
-//            NSString *strThumbURL = [dataDict objectForKey:@"thumb"];
-//                    dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-//                            strCarID,@"carID",
-//                            strBrand,@"brand",
-//                            strModel,@"model",
-//                            strDetail,@"detail",
-//                            strSubModel,@"subModel",
-//                            strPrices,@"prices",
-//                            strThumbURL,@"thumb"
-//                            , nil];
-//            
-//                    [arrResult addObject:dict];
-//            
-//           }
-//        
-//
-//
-//        
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"ไม่สามารถค้นหาข้อมูลได้" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-//        
-//        
-//        [alertView show];
-//    }];
-//    
-//    [operation start];
-    
+ 
 
     
     // Uncomment the following line to preserve selection between presentations.
@@ -185,7 +140,7 @@
     [manager downloadWithURL:thmbUrl
                      options:0
                     progress:nil
-                   
+     
                    completed:^(UIImage *image, NSError *error, SDImageCacheType  SDImageCacheTypeMemory, BOOL finished)
      {
          if (image)
@@ -198,26 +153,13 @@
              cell.cellThumb.image = [UIImage imageNamed:@"logo.png"];
          }
          
+          [UIApplication sharedApplication].networkActivityIndicatorVisible =NO ;
         
      }];
    
     
-//    [cell.cellThumb setImageWithURL:[NSURL URLWithString:strThub]
-//                   placeholderImage:[UIImage imageNamed:@"logo.png"]
-//                   completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-//                       if (image) {
-//                          
-//                       }
-//                   }
-//     ];
-     
-    
-     
-//    NSURL *thmbUrl = [NSURL URLWithString:[arrResult [indexPath.row] objectForKey:@"thumb"]];
-//    NSData *thmbData = [NSData dataWithContentsOfURL:thmbUrl];
-//    UIImage *thumb = [UIImage imageWithData:thmbData];
-    
-    NSString *brand = [NSString stringWithFormat:@"%@ %@ %@",[arrResult [indexPath.row] objectForKey:@"carID"],[arrResult [indexPath.row] objectForKey:@"brand"],[arrResult [indexPath.row] objectForKey:@"model"]];
+   
+    NSString *brand = [NSString stringWithFormat:@"%@ %@",[arrResult [indexPath.row] objectForKey:@"brand"],[arrResult [indexPath.row] objectForKey:@"model"]];
     
     NSString *detail= [NSString stringWithFormat:@"%@ %@",[arrResult [indexPath.row] objectForKey:@"subModel"],[arrResult [indexPath.row] objectForKey:@"detail"]];
     

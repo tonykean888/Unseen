@@ -11,12 +11,31 @@
 
 @interface CarFindViewController ()<CarTypeViewControllerDelegate,CarBrandViewControllerDelegate,CarModelViewControllerDelegate,CarSubModelViewControllerDelegate>
 
+{
 
+    NSString *cartype,*cartypeID,*brandID,*brandName,*modelName,*modelID,*subModel,*subModelID;
+}
 @end
 
 @implementation CarFindViewController
+
+
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    NSString *cartype,*cartypeID,*brandID,*brandName,*modelName,*modelID,*subModel,*subModelID;
+	if ((self = [super initWithCoder:aDecoder]))
+	{
+		NSLog(@"init PlayerDetailsViewController");
+        cartype = @"ทุกประเภท";
+        brandName =@"ทุกยี่ห้อ";
+        modelName = @"ทุกรุ่น";
+        subModel = @"ทุกโฉม";
+        cartypeID = @"0";
+        brandID = @"0";
+        modelID = @"0";
+        subModelID =@"0";
+		
+	}
+	return self;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -77,8 +96,8 @@
     
     return cell;
 }
-*/
 
+*/
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
