@@ -11,12 +11,8 @@
 @interface cellFavoriteCar : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UIImageView *imgFavCar;
-
 @property (strong, nonatomic) IBOutlet UILabel *lblFavCarBrand;
-
 @property (strong, nonatomic) IBOutlet UILabel *lblFavCarModel;
-
-
 @property (strong, nonatomic) IBOutlet UILabel *lblFavCarPrice;
 
 

@@ -351,9 +351,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="w1H-SF-bNe">
+                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="XM8-LP-LjP" id="jBI-NO-3lX"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellResult" rowHeight="88" id="D3D-Qf-sl0" customClass="cellFindResult">
-                                <rect key="frame" x="0.0" y="86" width="320" height="88"/>
+                                <rect key="frame" x="0.0" y="130" width="320" height="88"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D3D-Qf-sl0" id="szC-9b-5Pp">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="87"/>
@@ -398,14 +406,100 @@
                             <outlet property="delegate" destination="XM8-LP-LjP" id="ObW-Jy-2q9"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="ผลการค้นหา" id="48e-zN-VKT"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="ผลการค้นหา" id="48e-zN-VKT">
+                        <barButtonItem key="rightBarButtonItem" tag="1" title="รุ่นย่อยรถยนต์" id="2PC-uk-v5x">
+                            <connections>
+                                <segue destination="l4O-2U-Vow" kind="custom" identifier="popSubSubModel" customClass="WYStoryboardPopoverSegue" id="JD2-34-6pU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="searchDisplayController" destination="QTT-it-G6R" id="vSN-Qs-mWP"/>
+                        <outlet property="sidebarButton" destination="2PC-uk-v5x" id="As3-2F-0xl"/>
                         <outlet property="view" destination="g4h-hx-F1V" id="4u1-Ro-9gT"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R7y-qi-d9L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="QTT-it-G6R">
+                    <connections>
+                        <outlet property="delegate" destination="XM8-LP-LjP" id="YRv-IS-9UX"/>
+                        <outlet property="searchBar" destination="w1H-SF-bNe" id="Pmv-1A-Ps4"/>
+                        <outlet property="searchContentsController" destination="XM8-LP-LjP" id="vAK-zn-ONA"/>
+                        <outlet property="searchResultsDataSource" destination="XM8-LP-LjP" id="uot-Tk-ebG"/>
+                        <outlet property="searchResultsDelegate" destination="XM8-LP-LjP" id="aqG-KF-RAT"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2793" y="2121"/>
+            <point key="canvasLocation" x="2797" y="2149"/>
+        </scene>
+        <!--Sub Sub Model View Controller - เลือกรุ่นย่อย-->
+        <scene sceneID="vUO-qq-Dcn">
+            <objects>
+                <tableViewController id="nEu-Aw-Dp0" customClass="SubSubModelViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ltO-OY-asc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="9oS-lG-rw9" customClass="cellSubSubModel">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9oS-lG-rw9" id="Jb7-U8-hVZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZK0-D9-0G9">
+                                            <rect key="frame" x="20" y="11" width="280" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lblSubSubModel" destination="ZK0-D9-0G9" id="yj5-jv-Br7"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="nEu-Aw-Dp0" id="zQD-Ht-gNI"/>
+                            <outlet property="delegate" destination="nEu-Aw-Dp0" id="Hg9-og-dGk"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="เลือกรุ่นย่อย" id="v0L-Ni-BjD">
+                        <barButtonItem key="leftBarButtonItem" title="ยกเลิก" id="Rui-S1-mDH">
+                            <connections>
+                                <action selector="btnCancelPick:" destination="nEu-Aw-Dp0" id="V4V-tt-bl9"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="เลือกสำเร็จ" id="JMK-cC-X2K">
+                            <connections>
+                                <action selector="btnPickSubModel:" destination="nEu-Aw-Dp0" id="FG5-ax-bAE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a7M-qG-uk2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3925" y="2149"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9dM-pz-qrk">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="l4O-2U-Vow" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HGa-59-5N8">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="nEu-Aw-Dp0" kind="relationship" relationship="rootViewController" id="8A6-Y8-kaV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CMv-aD-m03" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3401" y="2149"/>
         </scene>
         <!--Car Detail View Controller - รายละเอียดรถยนต์-->
         <scene sceneID="54P-z6-RS8">
@@ -493,7 +587,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="รายละเอียดรถยนต์" id="cIQ-ik-WnR">
-                        <barButtonItem key="rightBarButtonItem" image="blue-heart.png" id="1WY-ND-37M"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="bookmarks" id="1WY-ND-37M"/>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
@@ -509,41 +603,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GHt-se-3KE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3324" y="90"/>
-        </scene>
-        <!--Car Garllery View Controller-->
-        <scene sceneID="h9U-RS-BZB">
-            <objects>
-                <viewController id="Xj7-bq-wi4" customClass="CarGarlleryViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="NwD-Il-JCw"/>
-                        <viewControllerLayoutGuide type="bottom" id="4dq-Os-eBe"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="yVw-C1-PmP">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="941-lf-4BI">
-                                <rect key="frame" x="0.0" y="66" width="320" height="424"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </scrollView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Gfp-Tu-eEi">
-                                <rect key="frame" x="141" y="481" width="39" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="pageIndicatorTintColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="currentPageIndicatorTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </pageControl>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="UnC-Ig-Yej"/>
-                    <connections>
-                        <outlet property="pageControl" destination="Gfp-Tu-eEi" id="fd7-jK-7o5"/>
-                        <outlet property="scrollView" destination="941-lf-4BI" id="2K2-OF-7Sw"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Jwb-XX-0ZY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5256" y="-117"/>
         </scene>
         <!--Car Type View Controller - เลือกประเภทรถยนต์-->
         <scene sceneID="OOv-xy-VoI">
@@ -736,9 +795,6 @@
             <point key="canvasLocation" x="736" y="-787"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="blue-heart.png" width="30" height="30"/>
-    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
