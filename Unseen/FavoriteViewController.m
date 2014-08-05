@@ -10,19 +10,23 @@
 
 @interface FavoriteViewController ()
 {
-    NSMutableArray *arrFavcar;
-    //NSDictionary *dic;
+  
+    NSMutableArray *carData;
+    NSString *selectCarID;
+   
+    FavoriteDataAccess *db;
 }
 @end
 
 @implementation FavoriteViewController
 
 
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        db = [[FavoriteDataAccess alloc] init];
     }
     return self;
 }
@@ -30,42 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSString *dbname = @"favorite_db.sqlite";
-    NSString *dbpath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:dbname];
-    
   
-    
-    arrFavcar = [[NSMutableArray alloc] init];
-    
-    FMDatabase *database = [FMDatabase databaseWithPath:dbpath];
-    [database open];
-    
-    FMResultSet *rs = [database executeQuery:@"SELECT * FROM favorite_db ORDER BY id"];
-    while ([rs next]) {
-        NSDictionary *dic = [rs resultDictionary];
-        [arrFavcar addObject:dic];
-//        
-//        NSString *sid   = [rs stringForColumn:@"id"];
-//        NSString *cid = [rs stringForColumn:@"car_id"];
-//        NSString *brand = [rs stringForColumn:@"brand"];
-//        NSString *model = [rs stringForColumn:@"model"];
-//        NSString *detail = [rs stringForColumn:@"detail"];
-//        NSString *sub_model = [rs stringForColumn:@"sub_model"];
-//        NSString *price = [rs stringForColumn:@"price"];
-//        NSString *thumb = [rs stringForColumn:@"thumb"];
-//        
-//        
-//        NSLog(@"id %@ carid %@ brand %@ model %@ detail %@ sub_model %@ price %@ thumb %@",sid,cid,brand,model,detail,sub_model,price,thumb);
-        
-    }
-    NSLog(@"%d",arrFavcar.count);
-    
-    [rs close];
-    [database close];
-    
-    
-    
-    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -73,11 +42,24 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    db = [[FavoriteDataAccess alloc] init];
+    
+   carData = [NSMutableArray arrayWithArray:[db findCarData]];
+    [self.tableView reloadData];
+    NSLog(@"%@",carData);
+    
+}
+
 
 #pragma mark - Table view data source
 
@@ -91,7 +73,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [arrFavcar count];
+    return [carData count];
 }
 
 
@@ -105,14 +87,16 @@
     if (cell ==nil) {
         cell = [[cellFavoriteCar alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
+    Car *car = [carData objectAtIndex:indexPath.row];
     
-    NSLog(@"%@",arrFavcar [indexPath.row]);
     
-    if([arrFavcar [indexPath.row] objectForKey:@"id"] != [NSNull null])
+    //NSLog(@"%@",car.carid);
+    
+   if(car.carid != NULL)
     {
         
     
-    NSURL *thmbUrl = [NSURL URLWithString:[arrFavcar [indexPath.row] objectForKey:@"thumb"]];;
+    NSURL *thmbUrl = [NSURL URLWithString:car.image];;
     
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
     
@@ -136,19 +120,11 @@
          
      }];
     
-    
-    
-    NSString *brand = [NSString stringWithFormat:@"%@ %@",[arrFavcar [indexPath.row] objectForKey:@"brand"],[arrFavcar [indexPath.row] objectForKey:@"model"]];
-    
-    NSString *detail= [NSString stringWithFormat:@"%@ %@",[arrFavcar [indexPath.row] objectForKey:@"sub_model"],[arrFavcar [indexPath.row] objectForKey:@"detail"]];
-    
-    id strP = [arrFavcar [indexPath.row] objectForKey:@"price"];
-        
-    NSString *price = [strP stringValue];
-        
-        
        
-    
+        NSString *brand = [NSString stringWithFormat:@"%@ %@",car.brand,car.model];
+        NSString *detail= [NSString stringWithFormat:@"%@ %@",car.subModel,car.detail];
+        NSString *price = car.prices;
+  
     [cell.lblFavCarBrand setText:brand];
     [cell.lblFavCarModel setText:detail];
     [cell.lblFavCarPrice setText:price];
@@ -163,27 +139,30 @@
     return 88;
 }
 
-/*
-// Override to support conditional editing of the table view.
+
+
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
+
     return YES;
 }
-*/
+-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"ลบข้อมูลรถ";
+}
 
-/*
-// Override to support editing the table view.
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+        Car * car = [carData objectAtIndex:indexPath.row];
+        [db deleteFavoriteCarWithID:car.carid];
+        [carData removeObjectAtIndex:indexPath.row];
+        [self.tableView reloadData];
+    }
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.
@@ -211,5 +190,23 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"pushToDetail"])
+    {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+          Car *car = [carData objectAtIndex:indexPath.row];
+
+        [[segue destinationViewController] setSCarID:car.carid];
+        
+        
+        
+    }
+}
+
+
+
 
 @end

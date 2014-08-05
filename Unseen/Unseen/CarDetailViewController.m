@@ -8,10 +8,16 @@
 
 #import "CarDetailViewController.h"
 
-@interface CarDetailViewController ()
+
+@interface CarDetailViewController ()<FSImageViewerViewControllerDelegate>
 {
+    
+
     NSMutableDictionary *dict;
     NSString *carDetail,*tentDetail;
+    NSString *strCarID,*strBrand,*strModel,*strDetail,*strSubModel,*strPrices,*strPricesDown,*strMap,
+    *strCarInt,*strCarExt,*strTentName,*strTentAddr,*strTentTel,*strThumbURL,*strGallery1 ,*strGallery2,
+    *strGallery3,*strGallery4,*strGallery5,*strGallery6,*strGallery7,*strGallery8,*strGallery9;
     NSMutableArray *arrDetail;
     NSURL *thmbUrl,*thmbMap,*gallery1,*gallery2,*gallery3,*gallery4,
            *gallery5,*gallery6,*gallery7,*gallery8,*gallery9;
@@ -21,7 +27,9 @@
 
 @implementation CarDetailViewController
 
-@synthesize segmentControl,imageView,textViewDetail,sCarID,tentScrollView,carScrollView,mapImage,tentDetailText,btnImage,btnMapImage;
+@synthesize segmentControl,imageView,textViewDetail,sCarID,tentScrollView,carScrollView,
+mapImage,tentDetailText,btnImage,btnMapImage,cars;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -36,7 +44,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     
     //    Reachability *reach = [Reachability reachabilityWithHostName:strUrl];
     //    NetworkStatus status = [reach currentReachabilityStatus];
@@ -49,7 +57,7 @@
     NSLog(@"%@",sCarID);
   
     arrDetail = [[NSMutableArray alloc]init];
-    [UIApplication sharedApplication].networkActivityIndicatorVisible =YES ;
+    
     
     NSString *strUrl = [NSString stringWithFormat:@"http://localhost/unseen/CarDetail.php?carID=%@",sCarID];
     
@@ -61,77 +69,48 @@
     
     for (NSDictionary *dataDict in jsonObj)
     {
-        NSString *strCarID = [dataDict objectForKey:@"car_id"];
-        NSString *strBrand = [dataDict objectForKey:@"brand_name"];
-        NSString *strModel = [dataDict objectForKey:@"model"];
-        NSString *strDetail = [dataDict objectForKey:@"sub_detail"];
-        NSString *strSubModel = [dataDict objectForKey:@"sub_submodel"];
-        NSString *strPrices = [dataDict objectForKey:@"prices"];
-        NSString *strPricesDown = [dataDict objectForKey:@"free_down"];
-        NSString *strCarInt = [dataDict objectForKey:@"car_interior"];
-        NSString *strCarExt = [dataDict objectForKey:@"car_exterior"];
-        NSString *strTentName = [dataDict objectForKey:@"name"];
-        NSString *strTentAddr = [dataDict objectForKey:@"address"];
-        NSString *strTentTel = [dataDict objectForKey:@"tel_office"];
-        NSString *strThumbURL = [dataDict objectForKey:@"thumb"];
-        NSString *strMap = [dataDict objectForKey:@"map"];
-        NSString *strGallery1 = [dataDict objectForKey:@"gallery1"];
-        NSString *strGallery2 = [dataDict objectForKey:@"gallery2"];
-        NSString *strGallery3 = [dataDict objectForKey:@"gallery3"];
-        NSString *strGallery4 = [dataDict objectForKey:@"gallery4"];
-        NSString *strGallery5 = [dataDict objectForKey:@"gallery5"];
-        NSString *strGallery6 = [dataDict objectForKey:@"gallery6"];
-        NSString *strGallery7 = [dataDict objectForKey:@"gallery7"];
-        NSString *strGallery8 = [dataDict objectForKey:@"gallery8"];
-        NSString *strGallery9 = [dataDict objectForKey:@"gallery9"];
-        
-    
-        dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-            strCarID,@"carID",
-            strBrand,@"brand",
-            strModel,@"model",
-            strDetail,@"detail",
-            strSubModel,@"subModel",
-            strPrices,@"prices",
-            strPricesDown,@"priceDown",
-            strCarExt,@"carExt",
-            strCarInt,@"carInt",
-            strThumbURL,@"thumb",
-            strTentName,@"tentName",
-            strTentAddr,@"tentAddr",
-            strTentTel,@"tentTel",
-            strMap,@"map",
-            strGallery1,@"gallery1",
-            strGallery2,@"gallery2",
-            strGallery3,@"gallery3",
-            strGallery4,@"gallery4",
-            strGallery5,@"gallery5",
-            strGallery6,@"gallery6",
-            strGallery7,@"gallery7",
-            strGallery8,@"gallery8",
-            strGallery9,@"gallery9"
-            , nil];
-    
-        [arrDetail addObject:dict];
-     
-   
+         strCarID = [dataDict objectForKey:@"car_id"];
+         strBrand = [dataDict objectForKey:@"brand_name"];
+         strModel = [dataDict objectForKey:@"model"];
+         strDetail = [dataDict objectForKey:@"sub_detail"];
+         strSubModel = [dataDict objectForKey:@"sub_submodel"];
+         strPrices = [dataDict objectForKey:@"prices"];
+         strPricesDown = [dataDict objectForKey:@"free_down"];
+         strCarInt = [dataDict objectForKey:@"car_interior"];
+         strCarExt = [dataDict objectForKey:@"car_exterior"];
+         strTentName = [dataDict objectForKey:@"name"];
+         strTentAddr = [dataDict objectForKey:@"address"];
+         strTentTel = [dataDict objectForKey:@"tel_office"];
+         strThumbURL = [dataDict objectForKey:@"thumb"];
+         strMap = [dataDict objectForKey:@"map"];
+         strGallery1 = [dataDict objectForKey:@"gallery1"];
+         strGallery2 = [dataDict objectForKey:@"gallery2"];
+         strGallery3 = [dataDict objectForKey:@"gallery3"];
+         strGallery4 = [dataDict objectForKey:@"gallery4"];
+         strGallery5 = [dataDict objectForKey:@"gallery5"];
+         strGallery6 = [dataDict objectForKey:@"gallery6"];
+         strGallery7 = [dataDict objectForKey:@"gallery7"];
+         strGallery8 = [dataDict objectForKey:@"gallery8"];
+         strGallery9 = [dataDict objectForKey:@"gallery9"];
+  
     }
     
- 
-    thmbUrl = [NSURL URLWithString:[arrDetail [0] objectForKey:@"thumb"]];
-    thmbMap = [NSURL URLWithString:[arrDetail [0] objectForKey:@"map"]];
-    gallery1 = [NSURL URLWithString:[arrDetail [0] objectForKey:@"gallery1"]];
-    gallery2 = [NSURL URLWithString:[arrDetail [0] objectForKey:@"gallery2"]];
-    gallery3 = [NSURL URLWithString:[arrDetail [0] objectForKey:@"gallery3"]];
-    gallery4 = [NSURL URLWithString:[arrDetail [0] objectForKey:@"gallery4"]];
-    gallery5 = [NSURL URLWithString:[arrDetail [0] objectForKey:@"gallery5"]];
-    gallery6 = [NSURL URLWithString:[arrDetail [0] objectForKey:@"gallery6"]];
-    gallery7 = [NSURL URLWithString:[arrDetail [0] objectForKey:@"gallery7"]];
-    gallery8 = [NSURL URLWithString:[arrDetail [0] objectForKey:@"gallery8"]];
-    gallery9 = [NSURL URLWithString:[arrDetail [0] objectForKey:@"gallery9"]];
+    //NSLog(@"%@",strThumbURL);
     
-    NSData *thmbMapData = [NSData dataWithContentsOfURL:thmbMap];
-    UIImage *map = [UIImage imageWithData:thmbMapData];
+    thmbUrl = [NSURL URLWithString:strThumbURL];
+    thmbMap = [NSURL URLWithString:strMap];
+    gallery1 = [NSURL URLWithString:strGallery1];
+    gallery2 = [NSURL URLWithString:strGallery2];
+    gallery3 = [NSURL URLWithString:strGallery3];
+    gallery4 = [NSURL URLWithString:strGallery4];
+    gallery5 = [NSURL URLWithString:strGallery5];
+    gallery6 = [NSURL URLWithString:strGallery6];
+    gallery7 = [NSURL URLWithString:strGallery7];
+    gallery8 = [NSURL URLWithString:strGallery8];
+    gallery9 = [NSURL URLWithString:strGallery9];
+    
+  //  NSData *thmbMapData = [NSData dataWithContentsOfURL:thmbMap];
+  //  UIImage *map = [UIImage imageWithData:thmbMapData];
     
  
     
@@ -169,6 +148,7 @@
      
                    completed:^(UIImage *image, NSError *error, SDImageCacheType  SDImageCacheTypeMemory, BOOL finished)
      {
+         [UIApplication sharedApplication].networkActivityIndicatorVisible =YES ;
          if (image)
          {
              [self.imageView setImage:image];
@@ -189,21 +169,11 @@
 
     
     
-    carDetail = [NSString stringWithFormat:@"%@ %@ %@ %@ \rราคา : %@ บาท\rดาวน์ %@\r\rอุปกรณ์เสริมภายใน \r%@ \r\rอุปกรณ์เสริมภายนอก\r%@ \r" ,
-                            [arrDetail [0] objectForKey:@"brand"],
-                            [arrDetail [0] objectForKey:@"model"],
-                            [arrDetail [0] objectForKey:@"subModel"],
-                            [arrDetail [0] objectForKey:@"detail"],
-                            [arrDetail [0] objectForKey:@"prices"],
-                            [arrDetail [0] objectForKey:@"priceDown"],
-                           // [arrDetail [0] objectForKey:@"carID"]];
-                            [arrDetail [0] objectForKey:@"carInt"],
-                            [arrDetail [0] objectForKey:@"carExt"]];
+    carDetail = [NSString stringWithFormat:@"%@ %@ %@ %@ \rราคา : %@ บาท\rดาวน์ %@\r\rอุปกรณ์เสริมภายใน \r%@ \r\rอุปกรณ์เสริมภายนอก\r%@ \r" ,strBrand,strModel,strSubModel,strDetail,strPrices,strPricesDown,strCarInt,strCarExt];
+    
     
     tentDetail = [NSString stringWithFormat:@"ชื่อเต็นท์ : %@ \rที่อยู่ :%@ \rเบอร์โทรศัพท์ :%@ \r ",
-                            [arrDetail [0] objectForKey:@"tentName"],
-                            [arrDetail [0] objectForKey:@"tentAddr"],
-                            [arrDetail [0] objectForKey:@"tentTel"]];
+                  strTentName,strTentAddr,strTentTel];
     
     
   //  [self.imageView setImage:thumb];
@@ -213,7 +183,7 @@
     
     
     
-    [mapImage setImage:map];
+    //[mapImage setImage:map];
     
     
     [self.carScrollView setHidden:NO];
@@ -270,8 +240,7 @@
     FSBasicImage *photo9 = [[FSBasicImage alloc] initWithImageURL:gallery9];
     
     
-//    FSBasicImage *secondPhoto = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:@"http://farm9.staticflickr.com/8023/6971840814_68614eba26_b.jpg"] name:@"Photo by Ben Fredericson (http://farm9.staticflickr.com/8023/6971840814_68614eba26_b.jpg)"];
-//    FSBasicImage *failingPhoto = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:@"http://example.com/1.jpg"] name:@"Failure image"];
+
     
     FSBasicImageSource *photoSource = [[FSBasicImageSource alloc] initWithImages:@[photo1,photo2,photo3,photo4,photo5,photo6,photo7,photo8,photo9]];
     self.imageViewController = [[FSImageViewerViewController alloc] initWithImageSource:photoSource];
@@ -350,5 +319,62 @@
 //    }
 //}
 
+- (IBAction)btnAddFavorite:(id)sender {
+    FavoriteDataAccess *db = [[FavoriteDataAccess alloc] init];
+    //[db createDataBase];
+    
+    
+    Car *car = [[Car alloc] init];
+    car.brand = strBrand;
+    car.model = strModel;
+    car.carid = strCarID;
+    car.detail = strDetail;
+    car.subModel = strSubModel;
+    car.prices = strPrices;
+    car.image = strThumbURL;
+ 
+    
+    if (![self validate:car]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR!!!" message:@"ข้อมูลผิดพลาด"
+                                                       delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+    
+        [alert show];
+        return;
+    }else{
+         [db saveFavoriteCar:car];
+    }
+    NSArray *dataCar = [[NSArray alloc] init];
+    dataCar = [db findCarData];
+   // NSLog(@"%d",dataCar.count);
+    
+    //[self.delegate addFavoriteViewController:self didAddFavorite:car];
+   // [self.delegate test:self :car];
+    
+    
+    
+    
+  //  NSString *databasePath = [(AppDelegate *)[[UIApplication sharedApplication] delegate] databasePath];
+    
+    
+
+
+        
+    //}
+
+}
+
+
+-(BOOL)validate:(Car *)c
+{
+    if ([c.brand length] == 0 ||[c.model length]== 0||[c.carid length] == 0||
+        [c.detail length] == 0 || [c.subModel length]==0 || [c.prices length] == 0||
+        [c.image length] == 0)
+    {
+      
+        return NO;
+    }
+   
+    return YES;
+}
 
 @end

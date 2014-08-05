@@ -8,15 +8,45 @@
 
 #import "AppDelegate.h"
 
+
+
 @implementation AppDelegate
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+
+    db = [FavoriteManager defaultDBManager].database;
+
+   
+    FMResultSet *set = [db executeQuery:[NSString stringWithFormat:@"SELECT COUNT(*) FROM sqlite_master WHERE type ='table' and name ='favorite'"]];
+    [set next];
+    
+    NSInteger count = [set intForColumn:0];
+    
+    BOOL exisTable = !!count;
+    
+    if (exisTable) {
+        NSLog(@"DB established");
+    }else{
+        NSString *sql = @"CREATE TABLE IF NOT EXISTS favorite (id INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , carID VARCHAR, brand VARCHAR, model VARCHAR, detail VARCHAR, submodel VARCHAR, price VARCHAR, thumb TEXT check(typeof(thumb) = 'text') )";
+        BOOL res = [db executeUpdate:sql];
+        if (!res) {
+            NSLog(@"DB Create fail");
+        }else{
+            NSLog(@"DB Create success");
+        }
+    }
+
+    
     sleep(2);
+    
     return YES;
 }
-							
+
+
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

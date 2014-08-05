@@ -31,6 +31,7 @@
 		EA0AF4101971AE5100D60F07 /* UIImage+MultiFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0AF4001971AE5100D60F07 /* UIImage+MultiFormat.m */; };
 		EA0AF4111971AE5100D60F07 /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0AF4021971AE5100D60F07 /* UIImage+WebP.m */; };
 		EA0AF4121971AE5100D60F07 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0AF4041971AE5100D60F07 /* UIImageView+WebCache.m */; };
+		EA254F8E198D951800B6C549 /* FavoriteDataAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8E7C6B198BB33E00BA3C07 /* FavoriteDataAccess.m */; };
 		EA333E11196BFEF90023C303 /* CarSubModelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA333E10196BFEF90023C303 /* CarSubModelViewController.m */; };
 		EA3D81CD1969DD5F00DC9C20 /* cellCarUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3D81CC1969DD5F00DC9C20 /* cellCarUpdate.m */; };
 		EA6478351975B98000C46B95 /* CarDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6478341975B98000C46B95 /* CarDetailViewController.m */; };
@@ -41,6 +42,7 @@
 		EA8852C7197C3BE200F22F8A /* contact.png in Resources */ = {isa = PBXBuildFile; fileRef = EA8852C6197C3BE200F22F8A /* contact.png */; };
 		EA8852C9197C3E3C00F22F8A /* top.png in Resources */ = {isa = PBXBuildFile; fileRef = EA8852C8197C3E3C00F22F8A /* top.png */; };
 		EA88C31F195EBCD6007F7EAB /* CarModelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA88C31E195EBCD6007F7EAB /* CarModelViewController.m */; };
+		EAB494DA198EB40A009380FE /* favorite_db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = EA923D6B197B2E86006BC2B5 /* favorite_db.sqlite */; };
 		EAC248AB197272BF00C14C6C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = EAC248AA197272BF00C14C6C /* Reachability.m */; };
 		EAC248AD197273B800C14C6C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC248AC197273B800C14C6C /* SystemConfiguration.framework */; };
 		EAC61FBD195A113500FEC7C7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC61FBC195A113500FEC7C7 /* Foundation.framework */; };
@@ -79,6 +81,7 @@
 		EAD59B8A197679A1002585F1 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD59B7F197679A1002585F1 /* AFURLRequestSerialization.m */; };
 		EAD59B8B197679A1002585F1 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD59B81197679A1002585F1 /* AFURLResponseSerialization.m */; };
 		EAD59B8C197679A1002585F1 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD59B83197679A1002585F1 /* AFURLSessionManager.m */; };
+		EAE042BE1990C5DA00DC68DF /* FavoriteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE042BD1990C5DA00DC68DF /* FavoriteManager.m */; };
 		EAE20124196AB3D500EACD58 /* CarDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE20123196AB3D500EACD58 /* CarDetail.m */; };
 		EAE3C270197E74BD0058D40A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE3C26F197E74BD0058D40A /* QuartzCore.framework */; };
 		EAE544011963EDD6007AD46C /* CarUpdateController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE544001963EDD6007AD46C /* CarUpdateController.m */; };
@@ -165,6 +168,8 @@
 		EA8852C8197C3E3C00F22F8A /* top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top.png; sourceTree = "<group>"; };
 		EA88C31D195EBCD6007F7EAB /* CarModelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarModelViewController.h; sourceTree = "<group>"; };
 		EA88C31E195EBCD6007F7EAB /* CarModelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarModelViewController.m; sourceTree = "<group>"; };
+		EA8E7C6A198BB33E00BA3C07 /* FavoriteDataAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteDataAccess.h; sourceTree = SOURCE_ROOT; };
+		EA8E7C6B198BB33E00BA3C07 /* FavoriteDataAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteDataAccess.m; sourceTree = SOURCE_ROOT; };
 		EA923D6B197B2E86006BC2B5 /* favorite_db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = favorite_db.sqlite; sourceTree = "<group>"; };
 		EA923D6C197B2E91006BC2B5 /* favorite_db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = favorite_db.sqlite; sourceTree = "<group>"; };
 		EAC248A9197272BF00C14C6C /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -238,6 +243,8 @@
 		EAD59B81197679A1002585F1 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		EAD59B82197679A1002585F1 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		EAD59B83197679A1002585F1 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		EAE042BC1990C5DA00DC68DF /* FavoriteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteManager.h; sourceTree = "<group>"; };
+		EAE042BD1990C5DA00DC68DF /* FavoriteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteManager.m; sourceTree = "<group>"; };
 		EAE20122196AB3D500EACD58 /* CarDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarDetail.h; sourceTree = "<group>"; };
 		EAE20123196AB3D500EACD58 /* CarDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarDetail.m; sourceTree = "<group>"; };
 		EAE3C26F197E74BD0058D40A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -356,6 +363,32 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
+		EA8E7C6D198BB34E00BA3C07 /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+				EAE042BC1990C5DA00DC68DF /* FavoriteManager.h */,
+				EAE042BD1990C5DA00DC68DF /* FavoriteManager.m */,
+				EA8E7C6A198BB33E00BA3C07 /* FavoriteDataAccess.h */,
+				EA8E7C6B198BB33E00BA3C07 /* FavoriteDataAccess.m */,
+			);
+			name = DAO;
+			sourceTree = "<group>";
+		};
+		EA8E7C6E198BB39300BA3C07 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EAF52884197AE1AD00C56650 /* cellFavoriteCar.h */,
+				EAF52885197AE1AD00C56650 /* cellFavoriteCar.m */,
+				EA3D81CB1969DD5F00DC9C20 /* cellCarUpdate.h */,
+				EA3D81CC1969DD5F00DC9C20 /* cellCarUpdate.m */,
+				EAF1E24219615EE500D65F19 /* cellFindResult.h */,
+				EAF1E24319615EE500D65F19 /* cellFindResult.m */,
+				EA876F081984126E0070F565 /* cellSubSubModel.h */,
+				EA876F091984126E0070F565 /* cellSubSubModel.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		EAC248A81972728C00C14C6C /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
@@ -403,6 +436,8 @@
 		EAC61FC2195A113500FEC7C7 /* Unseen */ = {
 			isa = PBXGroup;
 			children = (
+				EA8E7C6E198BB39300BA3C07 /* Cell */,
+				EA8E7C6D198BB34E00BA3C07 /* DAO */,
 				EAF5287F197AC95C00C56650 /* Db */,
 				EAF5287E197AC92900C56650 /* Lib */,
 				EA0AF3891971619F00D60F07 /* image */,
@@ -423,12 +458,6 @@
 				EAE544001963EDD6007AD46C /* CarUpdateController.m */,
 				EAFA85B31982DF6B009A4D4B /* SubSubModelViewController.h */,
 				EAFA85B41982DF6B009A4D4B /* SubSubModelViewController.m */,
-				EAF52884197AE1AD00C56650 /* cellFavoriteCar.h */,
-				EAF52885197AE1AD00C56650 /* cellFavoriteCar.m */,
-				EA3D81CB1969DD5F00DC9C20 /* cellCarUpdate.h */,
-				EA3D81CC1969DD5F00DC9C20 /* cellCarUpdate.m */,
-				EAF1E24219615EE500D65F19 /* cellFindResult.h */,
-				EAF1E24319615EE500D65F19 /* cellFindResult.m */,
 				EAF7D06619609C3000C3A18B /* FindResultViewController.h */,
 				EAF7D06719609C3000C3A18B /* FindResultViewController.m */,
 				EAE63C12198AC404003601E7 /* Car.h */,
@@ -437,8 +466,6 @@
 				EAD5088B195AEEE400C23A83 /* CarTypeViewController.m */,
 				EAD50887195AE8AF00C23A83 /* CarFindViewController.h */,
 				EAD50888195AE8AF00C23A83 /* CarFindViewController.m */,
-				EA876F081984126E0070F565 /* cellSubSubModel.h */,
-				EA876F091984126E0070F565 /* cellSubSubModel.m */,
 				EAC61FD1195A113500FEC7C7 /* Main_iPad.storyboard */,
 				EAFD1259195C4D7C00DBF795 /* CarBrandViewController.h */,
 				EAFD125A195C4D7C00DBF795 /* CarBrandViewController.m */,
@@ -655,6 +682,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAB494DA198EB40A009380FE /* favorite_db.sqlite in Resources */,
 				EAC91FB619670ED8004229ED /* Main_iPhone.storyboard in Resources */,
 				EA09B56C197941E4006CE0B5 /* blue-heart.png in Resources */,
 				EAC61FD3195A113500FEC7C7 /* Main_iPad.storyboard in Resources */,
@@ -683,6 +711,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA254F8E198D951800B6C549 /* FavoriteDataAccess.m in Sources */,
 				EAD59B6C1976779D002585F1 /* FSImageTitleView.m in Sources */,
 				EAD59B88197679A1002585F1 /* AFSecurityPolicy.m in Sources */,
 				EAD59B6D1976779D002585F1 /* FSImageView.m in Sources */,
@@ -710,6 +739,7 @@
 				EAD59B6A1976779D002585F1 /* FSImageLoader.m in Sources */,
 				EA09B57D1979AFD7006CE0B5 /* FMDatabase.m in Sources */,
 				EAF7D06819609C3000C3A18B /* FindResultViewController.m in Sources */,
+				EAE042BE1990C5DA00DC68DF /* FavoriteManager.m in Sources */,
 				EAD5088C195AEEE400C23A83 /* CarTypeViewController.m in Sources */,
 				EAE544011963EDD6007AD46C /* CarUpdateController.m in Sources */,
 				EAF52886197AE1AD00C56650 /* cellFavoriteCar.m in Sources */,

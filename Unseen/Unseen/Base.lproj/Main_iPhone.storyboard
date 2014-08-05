@@ -49,7 +49,7 @@
                                     <outlet property="lblFavCarBrand" destination="CuS-CB-G7e" id="9Ab-bQ-JVi"/>
                                     <outlet property="lblFavCarModel" destination="6hh-6i-VTS" id="sWW-qb-R9p"/>
                                     <outlet property="lblFavCarPrice" destination="rOw-xg-qP5" id="2eX-jd-Upm"/>
-                                    <segue destination="tXo-ag-Ymc" kind="push" id="K1p-Jk-iyg"/>
+                                    <segue destination="tXo-ag-Ymc" kind="push" identifier="pushToDetail" id="K1p-Jk-iyg"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -62,7 +62,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BLY-nw-49r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1335" y="90"/>
+            <point key="canvasLocation" x="1147" y="90"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YeB-VO-rSI">
@@ -587,7 +587,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="รายละเอียดรถยนต์" id="cIQ-ik-WnR">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="bookmarks" id="1WY-ND-37M"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="bookmarks" id="1WY-ND-37M">
+                            <connections>
+                                <action selector="btnAddFavorite:" destination="tXo-ag-Ymc" id="S3O-tz-wfW"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
@@ -602,7 +606,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GHt-se-3KE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3324" y="90"/>
+            <point key="canvasLocation" x="1712" y="90"/>
         </scene>
         <!--Car Type View Controller - เลือกประเภทรถยนต์-->
         <scene sceneID="OOv-xy-VoI">
@@ -801,6 +805,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="u4y-JK-xtS"/>
+        <segue reference="K1p-Jk-iyg"/>
     </inferredMetricsTieBreakers>
 </document>

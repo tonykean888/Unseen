@@ -8,8 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+#import "FavoriteDataAccess.h"
+#import "FavoriteManager.h"
 
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
+{
+     FMDatabase *db;
+}
 @property (strong, nonatomic) UIWindow *window;
+
+
+
+
 
 @end

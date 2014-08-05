@@ -16,6 +16,6 @@
 @property (nonatomic,copy) NSString *detail;
 @property (nonatomic,copy) NSString *prices;
 @property (nonatomic,copy) NSString *image;
-
+@property (nonatomic,copy) NSString *carid;
 
 @end
